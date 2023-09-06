@@ -21,6 +21,7 @@ namespace Scripts.Managers
         public static GameManager Instance { get; private set; }
         [SerializeField] private GameState currentState = GameState.Playing;
         [SerializeField] private MapData testMap = null;
+        public static Action onGameUpdate;
 
         private void Awake()
         {
@@ -41,10 +42,16 @@ namespace Scripts.Managers
             Manager<PrefabManager>.Instance.LoadPrefabs(() => currentState = GameState.Playing);
         }
 
+        private void Update()
+        {
+            onGameUpdate?.Invoke();
+        }
+
         private void AddManager()
         {
             Define.AddManager<PrefabManager>();
             Define.AddManager<MapManager>();
+            Define.AddManager<InputManager>();
         }
     }
 }

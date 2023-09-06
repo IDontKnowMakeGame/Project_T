@@ -7,6 +7,5 @@ namespace Scripts.Utilities.Data
     public class Info
     {
         public Vector2Int position;
-        
     }
 }

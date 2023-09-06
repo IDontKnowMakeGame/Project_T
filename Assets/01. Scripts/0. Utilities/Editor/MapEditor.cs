@@ -17,7 +17,7 @@ namespace _01._Scripts._0._Utilities.Editor
         public override void OnInspectorGUI()
         {
             _mapData.mapName = EditorGUILayout.TextField("Map Name", _mapData.mapName);
-            _mapData.mapSize = EditorGUILayout.Vector2Field("Map Size", _mapData.mapSize);
+            _mapData.mapSize = EditorGUILayout.Vector2IntField("Map Size", _mapData.mapSize);
 
 
             for (int h = 0; h < _mapData.mapSize.y; h++)

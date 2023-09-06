@@ -12,15 +12,21 @@ namespace Scripts.Managers
 {
     public class MapManager : Manager
     {
-        private readonly Dictionary<Vector2, Tile> _map = new();
+        private readonly Dictionary<Vector2Int, Tile> _map = new();
 
         public void AddTile(Tile tile)
         {
-            _map.Add(tile._tileData.position, tile);
+            _map.Add(tile.tileData.position, tile);
+        }
+        
+        public Tile GetTile(Vector2Int position)
+        {
+            return _map.TryGetValue(position, out var tile) ? tile : null;
         }
 
         public void LoadMap(MapData data)
         {
+            Define.MapSize = data.mapSize;
             var tilePrefab = Manager<PrefabManager>.Instance.GetPrefabs("Objects", "Tile");
             var mapTrm = GameObject.Find("Map").transform;
             var dPos = Vector3.zero;
@@ -30,9 +36,11 @@ namespace Scripts.Managers
             {
                 for (var w = 0; w < data.mapSize.x; w++)
                 {
-                    var tileObject = GameObject.Instantiate(tilePrefab, mapTrm);
+                    var tileObject = Object.Instantiate(tilePrefab, mapTrm);
                     tileObject.name = $"Tile #{count}";
                     tileObject.transform.localPosition = new Vector3(w, 0, h);
+                    var tile = tileObject.GetComponent<Tile>();
+                    tile.Init();
                     dPos += new Vector3(w,h);
                     count++;
                 }

@@ -7,7 +7,7 @@ namespace Scripts.Managers.Base
     public abstract class Manager
     {
         protected GameManager Parent { get; private set; }
-        public void Init(GameManager manager)
+        public virtual void Init(GameManager manager)
         {
             Parent = manager;
         }

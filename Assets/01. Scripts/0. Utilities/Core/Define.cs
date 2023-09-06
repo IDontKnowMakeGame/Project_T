@@ -8,6 +8,19 @@ namespace Scripts.Utilities.Core
 {
     public static class Define
     {
+        private static Vector2Int _mapSize;
+        
+        public static Vector2Int MapSize
+        {
+            get => _mapSize;
+            set => _mapSize = value;
+        }
+        
+        public static bool IsInMap(Vector2Int position)
+        {
+            return position.x >= 0 && position.x < _mapSize.x && position.y >= 0 && position.y < _mapSize.y;
+        }
+        
         private static readonly Dictionary<Type, Manager> Managers = new ();
         
         public static void AddManager<T>() where T : Manager, new()
@@ -38,7 +51,7 @@ namespace Scripts.Utilities.Core
 
         public static Vector2Int GetGridPosition(this Vector3 position)
         {
-            var pos = new Vector2(position.x, position.y);
+            var pos = new Vector2(position.x, position.z);
             var gridPos = Vector2Int.RoundToInt(pos);
             return gridPos;
         }
