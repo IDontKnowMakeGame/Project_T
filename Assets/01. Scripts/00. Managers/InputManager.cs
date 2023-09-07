@@ -26,6 +26,15 @@ namespace Scripts.Managers
                 onMoveDown?.Invoke(Vector3.left);
             if(Input.GetKeyDown(KeyCode.D))
                 onMoveDown?.Invoke(Vector3.right);
+            
+            if(Input.GetKey(KeyCode.W))
+                onMove?.Invoke(Vector3.forward);
+            if(Input.GetKey(KeyCode.S))
+                onMove?.Invoke(Vector3.back);
+            if(Input.GetKey(KeyCode.A))
+                onMove?.Invoke(Vector3.left);
+            if(Input.GetKey(KeyCode.D))
+                onMove?.Invoke(Vector3.right);
         }
     }
 }

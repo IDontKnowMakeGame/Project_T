@@ -13,7 +13,7 @@ namespace Scripts.Behaviours
         private bool _isMoving;
         private void Start()
         {
-            InputManager.onMoveDown += Translate;
+            InputManager.onMove += Translate;
         }
 
         private void Translate(Vector3 direction)

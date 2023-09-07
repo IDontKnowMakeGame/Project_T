@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace _01._Scripts._0._Utilities.Editor
+namespace Scripts.Utilities.Editor
 {
     [CustomEditor(typeof(MapData))]
     public class MapEditor : UnityEditor.Editor

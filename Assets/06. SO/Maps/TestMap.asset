@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TestMap
   m_EditorClassIdentifier: 
   mapName: Test
-  mapSize: {x: 5, y: 5}
+  mapSize: {x: 9, y: 9}
