@@ -6,7 +6,7 @@ namespace Scripts.Utilities.Data
     public class MapData : ScriptableObject
     {
         public string mapName;
-        public Vector2 mapSize;
+        public Vector2Int mapSize;
         public int[,] mapData;
     }
 }
