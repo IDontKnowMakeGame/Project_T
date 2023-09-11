@@ -12,8 +12,14 @@ namespace Scripts.Characters
     public class Character : Actor
     {
         private Tile _currentTile;
-        private void Awake()
+        public bool canBlock = false;
+        
+        public event Action<int> OnDamage;
+        public event Action OnDie;
+
+        protected override void Awake()
         {
+            base.Awake();
             actorData.position = transform.position.GetGridPosition();
             transform.position = actorData.position.GetWorldPosition();
         }
@@ -28,6 +34,16 @@ namespace Scripts.Characters
                 _currentTile.SetCharacter(null);
             tile.SetCharacter(this);
             _currentTile = tile;
+        }
+
+        public void Damage(int damage)
+        {
+            OnDamage?.Invoke(damage);
+        }
+
+        private void Die()
+        {
+            OnDie?.Invoke();
         }
     }
 }
