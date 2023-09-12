@@ -12,11 +12,13 @@ namespace Scripts.Actors
         public Info actorData;
         private readonly Dictionary<Type, Behaviour> _behaviours = new();
 
-        private void Awake()
+        protected virtual void Awake()
         {
             var behaviours = GetComponentsInChildren<Behaviour>();
+            Debug.Log(behaviours.Length);
             foreach (var behaviour in behaviours)
             {
+                Debug.Log(behaviour.GetType());
                 behaviour.owner = this;
                 _behaviours.Add(behaviour.GetType(), behaviour);
             }

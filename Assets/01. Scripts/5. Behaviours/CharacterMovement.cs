@@ -10,6 +10,8 @@ namespace Scripts.Behaviours
     public class CharacterMovement : Behaviour
     {
         [SerializeField] private float speed = 1f;
+        [SerializeField]
+        [Range(0f, 100f)] private float percent = 50f;
         private bool _isMoving;
         private void Start()
         {
@@ -28,7 +30,7 @@ namespace Scripts.Behaviours
             _isMoving = true;
             var seq = DOTween.Sequence();
             seq.Append(transform.DOMove(position, 1 / speed).SetEase(Ease.Linear));
-            seq.AppendCallback(() => _isMoving = false);
+            seq.InsertCallback((1 / speed) * (percent * 0.01f), () => _isMoving = false);
         }
     }
 }

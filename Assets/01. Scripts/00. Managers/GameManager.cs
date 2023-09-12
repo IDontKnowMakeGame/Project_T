@@ -21,6 +21,7 @@ namespace Scripts.Managers
         public static GameManager Instance { get; private set; }
         [SerializeField] private GameState currentState = GameState.Playing;
         [SerializeField] private MapData testMap = null;
+
         public static Action onGameUpdate;
 
         private void Awake()

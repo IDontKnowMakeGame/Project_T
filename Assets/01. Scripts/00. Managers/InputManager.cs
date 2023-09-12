@@ -9,6 +9,10 @@ namespace Scripts.Managers
         public static Action<Vector3> onMoveDown;
         public static Action<Vector3> onMove;
         public static Action<Vector3> onMoveUp;
+        
+        public static Action onAttackDown;
+        public static Action onAttack;
+        public static Action onAttackUp;
 
         public override void Init(GameManager manager)
         {
@@ -35,6 +39,14 @@ namespace Scripts.Managers
                 onMove?.Invoke(Vector3.left);
             if(Input.GetKey(KeyCode.D))
                 onMove?.Invoke(Vector3.right);
+            
+            
+            if(Input.GetKeyDown(KeyCode.K))
+                onAttackDown?.Invoke();
+            if(Input.GetKey(KeyCode.K))
+                onAttack?.Invoke();
+            if(Input.GetKeyUp(KeyCode.K))
+                onAttackUp?.Invoke();
         }
     }
 }
