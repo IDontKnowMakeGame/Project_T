@@ -28,7 +28,8 @@ namespace Scripts.Behaviours.Enemy.AI.Base
 
         public virtual bool Check()
         {
-            return Define.Conditions[condition].Invoke();
+            return true;
+            // return Define.Conditions[condition].Invoke();
         }
 
         
