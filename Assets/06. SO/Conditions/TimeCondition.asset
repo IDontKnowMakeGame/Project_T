@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: TimeCondition
   m_EditorClassIdentifier: 
   isNegated: 0
-  isImportant: 1
-  condition: 1
+  isImportant: 0
+  value:
+    intVal: 13
+    floatVal: 6
+  condition: 2

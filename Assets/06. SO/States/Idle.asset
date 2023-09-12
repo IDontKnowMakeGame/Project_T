@@ -19,7 +19,7 @@ MonoBehaviour:
       list:
       - isNegated: 0
         isImportant: 0
-        condition: 0
-      - isNegated: 0
-        isImportant: 0
-        condition: 0
+        value:
+          intVal: 0
+          floatVal: 2
+        condition: 1

@@ -17,4 +17,9 @@ MonoBehaviour:
   - to: {fileID: 11400000, guid: ec0285992c93fff48806783b190e78cb, type: 2}
     conditions:
       list:
-      - {fileID: 11400000, guid: 502a23584354b3c4fb70c10ec92b1e7c, type: 2}
+      - isNegated: 0
+        isImportant: 0
+        value:
+          intVal: 0
+          floatVal: 2
+        condition: 1

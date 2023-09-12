@@ -16,9 +16,9 @@ namespace Scripts.Behaviours.Enemy.AI.Base
         Area,
     }
     
-    [CreateAssetMenu(fileName = "Condition", menuName = "AI/Condition")]
+    //[CreateAssetMenu(fileName = "Condition", menuName = "AI/Condition")]
     [Serializable]
-    public class Condition : ScriptableObject
+    public class Condition
     {
         public bool isNegated;
         public bool isImportant = false;

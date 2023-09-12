@@ -18,4 +18,5 @@ MonoBehaviour:
   rows: 1
   totalFrames: 10
   moveSecond: 1
+  nextAnimation: 
   currentFrame: 0
