@@ -4,8 +4,9 @@ using UnityEngine.Serialization;
 
 namespace Scripts.Behaviours.Enemy.AI.Base
 {
-    [CreateAssetMenu(fileName = "State", menuName = "AI/State")]
-    public class State : ScriptableObject
+    //[CreateAssetMenu(fileName = "State", menuName = "AI/State")]
+    [Serializable]
+    public class State
     {
         public string stateName = null;
         
