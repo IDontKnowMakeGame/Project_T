@@ -213,6 +213,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   states:
   - {fileID: 11400000, guid: ec0285992c93fff48806783b190e78cb, type: 2}
+  - {fileID: 11400000, guid: 1d589f37f0c3e394fba272edbd9f0629, type: 2}
 --- !u!1 &414012422
 GameObject:
   m_ObjectHideFlags: 0

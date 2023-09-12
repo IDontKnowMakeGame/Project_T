@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TimeCondition
   m_EditorClassIdentifier: 
   isNegated: 0
-  isImportant: 0
-  condition: 0
+  isImportant: 1
+  condition: 1

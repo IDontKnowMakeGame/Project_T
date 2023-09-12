@@ -63,19 +63,19 @@ namespace Scripts.Utilities.Core
             return pos;
         }
         
-        public static readonly Dictionary<ECondition, Func<object, bool>> Conditions = new()
+        public static readonly Dictionary<ECondition, Func<InputData, bool>> Conditions = new()
         {
             { ECondition.None, (x) => true },
-            { ECondition.Time, Time}
+            { ECondition.Time, Time }
         };
         
         private static float _time = 0;
-        public static bool Time(object value)
+        public static bool Time(InputData value)
         {
             var result = false;
 
-            _time += UnityEngine.Time.time;
-            if (_time >= (float)value)
+            _time += UnityEngine.Time.deltaTime;
+            if (_time >= (value.floatVal))
             {
                 _time = 0;
                 result = true;

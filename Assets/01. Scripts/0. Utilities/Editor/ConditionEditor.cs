@@ -1,8 +1,11 @@
-﻿using Scripts.Behaviours.Enemy.AI.Base;
+﻿using System;
+using Scripts.Behaviours.Enemy.AI.Base;
 using Scripts.Utilities.Data;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 namespace Scripts.Utilities.Editor
 {
@@ -10,28 +13,24 @@ namespace Scripts.Utilities.Editor
     public class ConditionEditor : UnityEditor.Editor
     {
         private Condition _condition;
-        private void OnEnable()
+
+        private void Awake()
         {
-            _condition = (Condition)target;
+            _condition = (Condition) target;
         }
 
         public override void OnInspectorGUI()
         {
-            _condition.isNegated = EditorGUILayout.Toggle("Is Negated", _condition.isNegated);
-            _condition.isImportant = EditorGUILayout.Toggle("Is Important", _condition.isImportant);
-
-            _condition.condition = (ECondition)EditorGUILayout.EnumPopup("Condition", _condition.condition);
-
+            base.OnInspectorGUI();
             switch (_condition.condition)
             {
-                case ECondition.Time:
-                    _condition.floatVal = EditorGUILayout.FloatField("Time", (float) _condition.floatVal);
+                case ECondition.Time :
+                    _condition.value.floatVal = EditorGUILayout.FloatField("Time", _condition.value.floatVal);
                     break;
-                case ECondition.Distance:
-                    _condition.intVal = EditorGUILayout.IntField("Distance", (int) _condition.intVal);
+                case ECondition.Distance :
+                    _condition.value.intVal = EditorGUILayout.IntField("Distance", _condition.value.intVal);
                     break;
             }
-
             EditorUtility.SetDirty(_condition);
         }
     }

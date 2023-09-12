@@ -13,3 +13,13 @@ MonoBehaviour:
   m_Name: Idle
   m_EditorClassIdentifier: 
   stateName: Idle
+  transitions:
+  - to: {fileID: 11400000, guid: 1d589f37f0c3e394fba272edbd9f0629, type: 2}
+    conditions:
+      list:
+      - isNegated: 0
+        isImportant: 0
+        condition: 0
+      - isNegated: 0
+        isImportant: 0
+        condition: 0

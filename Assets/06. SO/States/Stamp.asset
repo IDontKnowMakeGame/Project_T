@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50baf7d8d2d46f489d57cde73bdd65e, type: 3}
   m_Name: Stamp
   m_EditorClassIdentifier: 
-  stateName: 
-  transitions: []
+  stateName: Stamp
+  transitions:
+  - to: {fileID: 11400000, guid: ec0285992c93fff48806783b190e78cb, type: 2}
+    conditions:
+      list:
+      - {fileID: 11400000, guid: 502a23584354b3c4fb70c10ec92b1e7c, type: 2}

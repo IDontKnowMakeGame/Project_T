@@ -17,7 +17,7 @@ namespace Scripts.Behaviours.Enemy.AI
 
         private void Start()
         {
-            CurrentState = states[0];
+            ChangeState(states[0]);
         }
 
         private void Update()
@@ -33,12 +33,18 @@ namespace Scripts.Behaviours.Enemy.AI
             {
                 if (transition.conditions.Check())
                 {
-                    CurrentState.onExit?.Invoke();
-                    CurrentState = transition.to;
-                    CurrentState.onEnter?.Invoke();
+                    ChangeState(transition.to);
                     break;
                 }
             }
+        }
+
+        public void ChangeState(State state)
+        {
+            if(CurrentState != null)
+                CurrentState.onExit?.Invoke();
+            CurrentState = state;
+            CurrentState.onEnter?.Invoke();
         }
     }
 }
