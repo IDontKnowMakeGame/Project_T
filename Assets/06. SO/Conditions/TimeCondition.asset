@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isNegated: 0
   isImportant: 1
+  value:
+    intVal: 0
+    floatVal: 0
   condition: 1
