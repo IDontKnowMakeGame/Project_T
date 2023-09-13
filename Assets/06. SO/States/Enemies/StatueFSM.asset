@@ -15,9 +15,7 @@ MonoBehaviour:
   states:
   - stateName: Idle
     transitions:
-    - to:
-        stateName: Stamp
-        transitions: []
+    - to: Stamp
       conditions:
         list:
         - isNegated: 0
@@ -28,9 +26,7 @@ MonoBehaviour:
           condition: 1
   - stateName: Stamp
     transitions:
-    - to:
-        stateName: Idle
-        transitions: []
+    - to: Idle
       conditions:
         list:
         - isNegated: 0

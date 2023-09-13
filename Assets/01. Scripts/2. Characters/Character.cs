@@ -17,9 +17,9 @@ namespace Scripts.Characters
         public event Action<int> OnDamage;
         public event Action OnDie;
 
-        protected override void Awake()
+        protected override void Init()
         {
-            base.Awake();
+            base.Init();
             actorData.position = transform.position.GetGridPosition();
             transform.position = actorData.position.GetWorldPosition();
         }
