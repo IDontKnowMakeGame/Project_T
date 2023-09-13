@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed82742b21b34d5a90685c4233db51fc, type: 3}
-  m_Name: Move
+  m_Name: Idle
   m_EditorClassIdentifier: 
-  texture: {fileID: 2800000, guid: 7987d2f78d8254d489034dec48328f47, type: 3}
-  material: {fileID: 2100000, guid: ec32b672df5162543974b6fea5b68f80, type: 2}
-  columns: 10
+  texture: {fileID: 2800000, guid: dc867df564eb2ea4c8d0f075f31b104c, type: 3}
+  material: {fileID: 2100000, guid: 7accf79cf9a02a341a4a66580a8312a9, type: 2}
+  columns: 1
   rows: 1
-  totalFrames: 10
-  moveSecond: 1
+  totalFrames: 1
+  moveSecond: 0
+  nextAnimation: 
   currentFrame: 0

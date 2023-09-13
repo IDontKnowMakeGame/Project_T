@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Scripts.Behaviours.Enemy.AI.Base;
+using Scripts.Characters.Player;
 using Scripts.Managers;
 using Scripts.Managers.Base;
 using UnityEngine;
@@ -15,6 +16,21 @@ namespace Scripts.Utilities.Core
         {
             get => _mapSize;
             set => _mapSize = value;
+        }
+        
+        private static Player _player;
+        
+        public static Player Player
+        {
+            get
+            {
+                if (_player == null)
+                {
+                    _player = GameObject.FindObjectOfType<Player>();
+                }
+
+                return _player;
+            }
         }
         
         public static bool IsInMap(Vector2Int position)

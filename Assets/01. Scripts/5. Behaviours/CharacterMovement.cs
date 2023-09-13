@@ -10,27 +10,42 @@ namespace Scripts.Behaviours
     public class CharacterMovement : Behaviour
     {
         [SerializeField] private float speed = 1f;
+        
         [SerializeField]
-        [Range(0f, 100f)] private float percent = 50f;
-        private bool _isMoving;
+        [Range(0f, 100f)] private float percent;
+        protected bool _isMoving;
+
+        private Vector3 movePos;
+
         private void Start()
         {
-            InputManager.onMove += Translate;
+            movePos = transform.position;
         }
-
-        private void Translate(Vector3 direction)
+        public void Translate(Vector3 direction)
         {
-            Move(transform.position + direction);
+            Move(movePos + direction);
         }
         
-        private void Move(Vector3 position)
+        public virtual void Move(Vector3 position)
         {
-            if(_isMoving) return;
+            if (_isMoving) return;
             if (Define.IsInMap(position.GetGridPosition()) == false) return;
+            movePos = position;
             _isMoving = true;
             var seq = DOTween.Sequence();
-            seq.Append(transform.DOMove(position, 1 / speed).SetEase(Ease.Linear));
+            seq.Append(transform.DOMove(movePos, 1 / speed).SetEase(Ease.Linear));
             seq.InsertCallback((1 / speed) * (percent * 0.01f), () => _isMoving = false);
+        }
+
+        public void Jump(Vector3 position)
+        {
+            if (_isMoving) return;
+            if (Define.IsInMap(position.GetGridPosition()) == false) return;
+            
+            _isMoving = true;
+            var seq = DOTween.Sequence();
+            seq.Append(transform.DOJump(position, 1, 1, 1 / speed).SetEase(Ease.Linear));
+            seq.AppendCallback(() => _isMoving = false);
         }
     }
 }

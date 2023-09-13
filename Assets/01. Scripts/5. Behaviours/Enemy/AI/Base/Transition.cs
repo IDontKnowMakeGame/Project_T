@@ -7,7 +7,7 @@ namespace Scripts.Behaviours.Enemy.AI.Base
     [Serializable]
     public class Transition
     { 
-        public State to = null;
+        public string to = null;
         
         public Conditions conditions = null;
     }

@@ -22,6 +22,14 @@ namespace Scripts.Actors
                 behaviour.owner = this;
                 _behaviours.Add(behaviour.GetType(), behaviour);
             }
+            
+            Init();
+        }
+
+
+        protected virtual void Init()
+        {
+            
         }
         
         public void GetBehaviour<T>(out T behaviour) where T : Behaviour

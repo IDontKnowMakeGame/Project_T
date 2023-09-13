@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Scripts.Utilities.Data;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Scripts.Behaviours
 {
     public class CharacterRenderer : Behaviour
     {
-        [SerializeField] private AnimationData initialAnimationData;
+        [SerializeField] private List<AnimationData> animationDataList;
         [SerializeField] private BlinkInfo blinkInfo;
         private Renderer _renderer;
         
@@ -19,10 +20,10 @@ namespace Scripts.Behaviours
         {
             _renderer = GetComponent<Renderer>();
 
-            if (initialAnimationData)
+            if (animationDataList.Count > 0)
             {
-                ChangeAnimation(initialAnimationData);
-                _renderer.material.mainTexture = initialAnimationData.texture;
+                ChangeAnimation(animationDataList[0]);
+                _renderer.material.mainTexture = animationDataList[0].texture;
             }
         }
 
@@ -51,10 +52,13 @@ namespace Scripts.Behaviours
             {
                 _currentFrame++;
                 _time = 0f;
-                
-                    
+
+
                 if (_currentFrame >= _aniData.totalFrames)
+                {
                     _currentFrame = 0;
+                    
+                }
                     
                 _renderer.material.SetVector("_Offset", new Vector4(_currentFrame * offset, 0));
                     
