@@ -53,6 +53,7 @@ namespace Scripts.Managers
             Define.AddManager<PrefabManager>();
             Define.AddManager<MapManager>();
             Define.AddManager<InputManager>();
+            Define.AddManager<DialogueManager>();
         }
     }
 }

@@ -8,6 +8,7 @@ using UnityEngine;
 public class CSVConverter : MonoBehaviour
 {
 	private static ChapterSO chapterSo;
+
 	public static void ConvertingCSV(string csv)
 	{
 		var lines = Regex.Split(csv, "\n");
