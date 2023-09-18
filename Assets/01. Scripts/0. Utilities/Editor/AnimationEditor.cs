@@ -24,6 +24,12 @@ namespace Scripts.Utilities.Editor
             _aniData.rows = EditorGUILayout.IntField("Rows", _aniData.rows);
             _aniData.totalFrames = EditorGUILayout.IntField("Total Frames", _aniData.totalFrames);
             _aniData.moveSecond = EditorGUILayout.FloatField("Move Second", _aniData.moveSecond);
+            _aniData.loop = EditorGUILayout.Toggle("Loop", _aniData.loop);
+
+            if(!_aniData.loop)
+            {
+                _aniData.nextIdx = EditorGUILayout.IntField("Next Idx", _aniData.nextIdx);
+            }
 
             if (Application.isPlaying == false)
             {

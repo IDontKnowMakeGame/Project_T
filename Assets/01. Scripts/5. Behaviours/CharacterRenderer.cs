@@ -23,7 +23,6 @@ namespace Scripts.Behaviours
             if (animationDataList.Count > 0)
             {
                 ChangeAnimation(animationDataList[0]);
-                _renderer.material.mainTexture = animationDataList[0].texture;
             }
         }
 
@@ -56,8 +55,13 @@ namespace Scripts.Behaviours
 
                 if (_currentFrame >= _aniData.totalFrames)
                 {
-                    _currentFrame = 0;
-                    
+                    if (_aniData.loop)
+                        _currentFrame = 0;
+                    else
+                    {
+                        ChangeAnimation(GetAnimationData(_aniData.nextIdx));
+                        return;    
+                    }
                 }
                     
                 _renderer.material.SetVector("_Offset", new Vector4(_currentFrame * offset, 0));
@@ -67,9 +71,19 @@ namespace Scripts.Behaviours
 
         public void ChangeAnimation(AnimationData data)
         {
+
             _aniData = data;
+            _renderer.material.mainTexture = _aniData.texture;
+            _renderer.material.SetVector("_Tiling", new Vector4(0, 1));
+            _renderer.material.SetVector("_Offset", new Vector4(0, 0));
             _currentFrame = 0;
             _time = 0f;
+
+        }
+
+        public AnimationData GetAnimationData(int idx)
+        {
+            return animationDataList[idx];
         }
 
         private void Blink(int none)
