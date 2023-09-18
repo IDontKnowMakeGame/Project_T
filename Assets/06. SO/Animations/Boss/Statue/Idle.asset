@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Idle
   m_EditorClassIdentifier: 
   texture: {fileID: 2800000, guid: dc867df564eb2ea4c8d0f075f31b104c, type: 3}
-  material: {fileID: 0}
-  columns: 0
-  rows: 0
-  totalFrames: 0
+  material: {fileID: 2100000, guid: 7accf79cf9a02a341a4a66580a8312a9, type: 2}
+  columns: 1
+  rows: 1
+  totalFrames: 1
   moveSecond: 0
   nextAnimation: 
   currentFrame: 0

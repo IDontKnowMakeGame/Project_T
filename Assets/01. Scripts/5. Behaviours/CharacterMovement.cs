@@ -11,8 +11,10 @@ namespace Scripts.Behaviours
     public class CharacterMovement : Behaviour
     {
         [SerializeField] private float speed = 1f;
+        
         [SerializeField]
         [Range(0f, 100f)] private float percent;
+
         private bool _isMoving;
         private bool _useInsert = true;
 
@@ -26,8 +28,8 @@ namespace Scripts.Behaviours
             moveQueue = new Queue<Vector3>();
         }
 
-        private void Start()
-        {
+        public void Translate(Vector3 direction)
+        { 
             InputManager.onMove += InsertMoveQueue;
         }
 
@@ -97,7 +99,7 @@ namespace Scripts.Behaviours
             });
         }
 
-        private void Jump(Vector3 position)
+        public void Jump(Vector3 position)
         {
             if (_isMoving) return;
             if (Define.IsInMap(position.GetGridPosition()) == false) return;

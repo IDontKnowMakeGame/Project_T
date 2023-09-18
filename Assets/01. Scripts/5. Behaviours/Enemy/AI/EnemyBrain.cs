@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Scripts.Behaviours.Enemy.AI.Base;
 using Scripts.Utilities.Data;
+using UnityEngine;
 
 namespace Scripts.Behaviours.Enemy.AI
 {
@@ -32,9 +33,12 @@ namespace Scripts.Behaviours.Enemy.AI
 
             foreach (var transition in CurrentState.transitions)
             {
-                if (transition.conditions.Check())
+                var result = transition.conditions.Check();
+                Debug.Log(result);
+                if (result)
                 {
-                    ChangeState(transition.to);
+                    var next = GetState(transition.to);
+                    ChangeState(next);
                     break;
                 }
             }

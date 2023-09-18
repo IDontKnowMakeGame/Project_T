@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
 using Scripts.Behaviours.Enemy.AI;
 using UnityEngine;
 
@@ -6,11 +9,12 @@ namespace Scripts.Characters.Enemy
 {
     public class Enemy : Character
     {
-        private void Start()
+        protected EnemyBrain brain;
+        protected virtual void Start()
         {
-            GetBehaviour<EnemyBrain>(out var brain);
+            GetBehaviour<EnemyBrain>(out brain);
             brain.GetState("Idle").onEnter += () => Debug.Log("Idle");
-            brain.GetState("Stamp").onEnter += () => Debug.Log("Stamp");
         }
+
     }
 }
