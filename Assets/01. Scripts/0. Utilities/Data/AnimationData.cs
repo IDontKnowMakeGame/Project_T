@@ -11,6 +11,9 @@ namespace Scripts.Utilities.Data
         public int rows;
         public int totalFrames;
         public float moveSecond;
+        public bool loop;
+        public int nextIdx;
+        // ---------------------------------
         public string nextAnimation;
         public int currentFrame;
     }

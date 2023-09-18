@@ -8,13 +8,18 @@ namespace Scripts.Behaviours
 {
     public class CharacterAttack : Behaviour
     {
+        private CharacterRenderer _characterRenderer;
+
         private void Start()
         {
+            _characterRenderer = GetComponentInChildren<CharacterRenderer>();
             InputManager.onAttackDown += Attack;
         }
 
         private void Attack()
         {
+            _characterRenderer.ChangeAnimation(_characterRenderer.GetAnimationData(2));
+
             var directions = new[]
             {
                 Vector2Int.up,
