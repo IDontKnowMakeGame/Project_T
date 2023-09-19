@@ -32,7 +32,7 @@ namespace Scripts.Managers
                     {
                         var result = handler2.Result;
 
-                        AddPrefab(categories[1], categories[2].Replace(".prefab", ""), result);
+                        AddPrefab(categories[2].Split(" ")[1], categories[3].Replace(".prefab", ""), result);
                         
                         
                         callBack?.Invoke();
@@ -43,6 +43,7 @@ namespace Scripts.Managers
 
         private void AddPrefab(string category, string name, GameObject prefab)
         {
+            Debug.Log($"{category}_{name}");
             _prefabs.TryAdd(category, new Dictionary<string, GameObject>());
             _prefabs[category].Add(name, prefab);
         }

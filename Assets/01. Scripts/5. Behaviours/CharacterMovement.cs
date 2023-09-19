@@ -17,10 +17,13 @@ namespace Scripts.Behaviours
 
         private Vector3 movePos;
 
+        protected Action _onMoveEnd;
+
         private void Start()
         {
             movePos = transform.position;
-        }
+            _onMoveEnd += MoveEnd;
+		}
         public void Translate(Vector3 direction)
         {
             Move(movePos + direction);
@@ -34,7 +37,7 @@ namespace Scripts.Behaviours
             _isMoving = true;
             var seq = DOTween.Sequence();
             seq.Append(transform.DOMove(movePos, 1 / speed).SetEase(Ease.Linear));
-            seq.InsertCallback((1 / speed) * (percent * 0.01f), () => _isMoving = false);
+            seq.InsertCallback((1 / speed) * (percent * 0.01f), () => _onMoveEnd?.Invoke());
         }
 
         public void Jump(Vector3 position)
@@ -47,5 +50,8 @@ namespace Scripts.Behaviours
             seq.Append(transform.DOJump(position, 1, 1, 1 / speed).SetEase(Ease.Linear));
             seq.AppendCallback(() => _isMoving = false);
         }
-    }
+
+        protected void MoveEnd() => _isMoving = false;
+
+	}
 }
