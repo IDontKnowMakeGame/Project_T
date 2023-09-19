@@ -5,12 +5,12 @@ namespace Scripts.Characters.Player
 {
     public class Player : Character
     {
-        CharacterMovement _movement;
+        //CharacterMovement _movement;
         protected override void Init()
         {
             base.Init();
-            GetBehaviour(out _movement);
-            InputManager.onMove += _movement.Translate;
+            //GetBehaviour(out _movement);
+            //InputManager.onMove += _movement.Translate;
         }
     }
 }

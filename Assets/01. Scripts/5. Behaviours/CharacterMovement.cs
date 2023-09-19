@@ -15,7 +15,7 @@ namespace Scripts.Behaviours
         [SerializeField]
         [Range(0f, 100f)] private float percent;
 
-        private bool _isMoving;
+        protected bool _isMoving;
         private bool _useInsert = true;
 
         private CharacterRenderer _characterRenderer;
@@ -28,9 +28,9 @@ namespace Scripts.Behaviours
             moveQueue = new Queue<Vector3>();
         }
 
-        public void Translate(Vector3 direction)
-        { 
-            InputManager.onMove += InsertMoveQueue;
+        private void Start()
+        {
+            InputManager.onMoveDown += InsertMoveQueue;
         }
 
         private void InsertMoveQueue(Vector3 direction)
@@ -74,7 +74,7 @@ namespace Scripts.Behaviours
             _characterRenderer.transform.localScale = playerScale;
         }
         
-        private void Move(Vector3 dir)
+        public virtual void Move(Vector3 dir)
         {
             Vector3 position = transform.position + dir;
 

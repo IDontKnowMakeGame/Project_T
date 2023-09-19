@@ -31,13 +31,13 @@ namespace Scripts.Managers
             if(Input.GetKeyDown(KeyCode.D))
                 onMoveDown?.Invoke(Vector3.right);
             
-            if(Input.GetKeyDown(KeyCode.W))
+            if(Input.GetKey(KeyCode.W))
                 onMove?.Invoke(Vector3.forward);
-            if(Input.GetKeyDown(KeyCode.S))
+            if(Input.GetKey(KeyCode.S))
                 onMove?.Invoke(Vector3.back);
-            if(Input.GetKeyDown(KeyCode.A))
+            if(Input.GetKey(KeyCode.A))
                 onMove?.Invoke(Vector3.left);
-            if(Input.GetKeyDown(KeyCode.D))
+            if(Input.GetKey(KeyCode.D))
                 onMove?.Invoke(Vector3.right);
             
             

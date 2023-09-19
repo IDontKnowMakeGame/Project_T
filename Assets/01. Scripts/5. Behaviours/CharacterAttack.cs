@@ -8,6 +8,9 @@ namespace Scripts.Behaviours
 {
     public class CharacterAttack : Behaviour
     {
+        [SerializeField]
+        private Vector2 ImpactOffsetXZ;
+
         private CharacterRenderer _characterRenderer;
 
         private void Start()
@@ -38,11 +41,29 @@ namespace Scripts.Behaviours
                 if (!block) continue;
                 if (!block.characterOnTile) continue;
 
+                ChooseLeftOrRight(direction);
+
                 var character = block.characterOnTile;
                 owner.GetBehaviour<CharacterStat>(out var curStat);
                 character.Damage(curStat.Atk);
 
             }
+        }
+
+        private void ChooseLeftOrRight(Vector2Int direction)
+        {
+            Vector3 playerScale = _characterRenderer.transform.localScale;
+
+            if (direction == Vector2Int.left)
+            {
+                playerScale.x = -(Mathf.Abs(playerScale.x));
+            }
+            else if (direction == Vector2Int.right)
+            {
+                playerScale.x = (Mathf.Abs(playerScale.x));
+            }
+
+            _characterRenderer.transform.localScale = playerScale;
         }
     }
 }

@@ -563,6 +563,8 @@ MonoBehaviour:
   owner: {fileID: 0}
   animationDataList:
   - {fileID: 11400000, guid: e5abd4e973ce3104d955ffd3c06bf7f7, type: 2}
+  - {fileID: 11400000, guid: c610756dbb718fb4b98b3d675399d158, type: 2}
+  - {fileID: 11400000, guid: bc7f998f5be853a4eb4677c0ef98fc3f, type: 2}
   blinkInfo:
     blinkCount: 0
     blinkInterval: 0

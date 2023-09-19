@@ -34,7 +34,7 @@ namespace Scripts.Behaviours.Enemy.AI
             foreach (var transition in CurrentState.transitions)
             {
                 var result = transition.conditions.Check();
-                Debug.Log(result);
+                // Debug.Log(result);
                 if (result)
                 {
                     var next = GetState(transition.to);
