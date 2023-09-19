@@ -17,6 +17,8 @@ MonoBehaviour:
   columns: 10
   rows: 1
   totalFrames: 10
-  moveSecond: 1
+  moveSecond: 0.25
+  loop: 1
+  nextIdx: 0
   nextAnimation: 
   currentFrame: 0
