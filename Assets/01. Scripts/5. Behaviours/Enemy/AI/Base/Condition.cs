@@ -14,6 +14,7 @@ namespace Scripts.Behaviours.Enemy.AI.Base
         Health,
         Box,
         Area,
+        
     }
     
     //[CreateAssetMenu(fileName = "Condition", menuName = "AI/Condition")]

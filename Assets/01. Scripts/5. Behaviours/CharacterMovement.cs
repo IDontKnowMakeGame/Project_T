@@ -18,6 +18,13 @@ namespace Scripts.Behaviours
         protected bool _isMoving;
         private bool _useInsert = true;
 
+        protected Action _onMoveEnd;
+
+        private void Start()
+        {
+            movePos = transform.position;
+            _onMoveEnd += MoveEnd;
+		}
         private CharacterRenderer _characterRenderer;
 
         private Queue<Vector3> moveQueue;
@@ -87,6 +94,7 @@ namespace Scripts.Behaviours
             _characterRenderer.ChangeAnimation(_characterRenderer.GetAnimationData(1));
 
             var seq = DOTween.Sequence();
+            seq.Append(transform.DOMove(movePos, 1 / speed).SetEase(Ease.Linear));
             seq.Append(transform.DOMove(position, 1 / speed).SetEase(Ease.Linear));
             seq.InsertCallback((1 / speed) * (percent * 0.01f), () => 
             {
@@ -94,7 +102,7 @@ namespace Scripts.Behaviours
             });
             seq.AppendCallback(() => 
             {
-                _isMoving = false;
+                _onMoveEnd?.Invoke()
                 Translate();
             });
         }
@@ -109,5 +117,8 @@ namespace Scripts.Behaviours
             seq.Append(transform.DOJump(position, 1, 1, 1 / speed).SetEase(Ease.Linear));
             seq.AppendCallback(() => _isMoving = false);
         }
-    }
+
+        protected void MoveEnd() => _isMoving = false;
+
+	}
 }
